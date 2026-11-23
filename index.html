@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -27,9 +28,53 @@ header{background:var(--mocha);color:white;padding:15px clamp(12px,4vw,40px);dis
 .brand p{margin:5px 0 0}
 .header-actions{display:flex;gap:6px;flex-wrap:wrap}
 .icon-button{border:1px solid #ffffff70;background:#ffffff20;color:white;border-radius:9px;padding:9px}
+
+/* قائمة الأقسام */
 nav{position:sticky;top:0;z-index:10;display:flex;justify-content:center;flex-wrap:wrap;gap:5px;background:white;padding:9px;box-shadow:0 3px 10px #49352e12}
 nav button{border:0;border-radius:8px;background:transparent;color:var(--mocha);padding:10px}
 nav button.active,nav button:hover{background:var(--mocha);color:white}
+
+/* خانة من نحن تحت الشعار */
+.about-entry-wrap{
+  background:var(--cream);
+  padding:14px 12px 4px;
+  text-align:center;
+}
+.about-entry{
+  display:block;
+  width:min(92%,520px);
+  margin:0 auto;
+  padding:13px 18px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--white);
+  color:var(--mocha);
+  text-align:center;
+  cursor:pointer;
+}
+.about-entry-title{
+  display:block;
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+.about-entry-subtitle{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#80685d;
+  font-size:14px;
+}
+.about-entry-arrow{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-right:1.7px solid currentColor;
+  border-bottom:1.7px solid currentColor;
+  transform:rotate(45deg);
+  margin-top:-4px;
+}
+
 .hero{text-align:center;padding:25px 14px;background:var(--beige)}
 .hero h2{margin:0 0 8px}
 .hero p{line-height:1.8}
@@ -66,6 +111,23 @@ select,input,textarea{max-width:100%;padding:9px;border:1px solid var(--border);
 .card-actions{padding:0 5px}
 .heart{border:0;background:transparent;font-size:23px;color:var(--wine)}
 .panel{background:var(--beige);padding:18px;margin:20px auto;width:calc(100% - 24px);max-width:900px;border-radius:14px}
+
+/* تصميم قسم من نحن */
+.about-intro{text-align:center;line-height:1.8;margin:0 0 22px;color:var(--wine);font-weight:bold;font-size:18px}
+.about-team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.about-member{background:var(--white);border:1px solid var(--border);border-radius:13px;overflow:hidden;text-align:center;padding-bottom:15px}
+.about-member img{
+  display:block;
+  width:100%;
+  height:340px;
+  object-fit:contain;
+  object-position:center top;
+  background:var(--cream);
+}
+.about-member h3{margin:13px 6px 5px;color:var(--mocha)}
+.about-member p{margin:0 6px;color:#80685d;line-height:1.7}
+@media(max-width:620px){.about-team{grid-template-columns:1fr;max-width:360px;margin:auto}.about-member img{height:300px}}
+
 .cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
 .cart-row button{border:0;border-radius:6px;padding:6px 10px;background:white;color:var(--text)}
 .total{font-weight:bold;font-size:19px}
@@ -74,7 +136,8 @@ select,input,textarea{max-width:100%;padding:9px;border:1px solid var(--border);
 textarea.field{min-height:80px;resize:vertical}
 label{display:block;font-weight:bold;margin-top:10px}
 .detail-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.detail-image{width:100%;max-height:480px;object-fit:contain;border-radius:12px;background:white}
+.detail-image{width:100%;max-height:480px;object-fit:cover;
+object-position:center top;border-radius:12px;background:white}
 .detail-thumbnails{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .detail-thumb{width:60px;height:60px;padding:0;overflow:hidden;border:1px solid var(--border);background:white}
 .detail-thumb img{width:100%;height:100%;object-fit:cover}
@@ -89,6 +152,7 @@ label{display:block;font-weight:bold;margin-top:10px}
 footer{background:var(--mocha);color:white;text-align:center;padding:23px 12px;margin-top:30px;line-height:1.9}
 footer a{color:white}
 .whatsapp-float{position:fixed;bottom:16px;left:16px;z-index:30;width:52px;height:52px;border-radius:50%;background:#25D366;color:white;display:grid;place-items:center;font-size:25px;text-decoration:none;border:3px solid white}
+
 @media(max-width:620px){
  header{padding:12px}
  .brand-photo{width:45px;height:45px}
@@ -106,7 +170,7 @@ footer a{color:white}
   object-position:center;
   background:var(--beige);
   cursor:pointer;
-}
+ }
  .product h3{font-size:14px}
  .product .btn{font-size:12px;padding:8px}
  .detail-layout{grid-template-columns:1fr}
@@ -134,6 +198,17 @@ footer a{color:white}
     <div><h1>SAZIN STORE</h1><p>كل اللي بتحبيه بمكان واحد 🤎</p></div>
   </a>
 </header>
+
+<!-- خانة من نحن المستقلة تحت الشعار والاسم -->
+<div class="about-entry-wrap">
+  <button class="about-entry" type="button" onclick="toggleAbout()">
+    <span class="about-entry-title">من نحن؟</span>
+    <span class="about-entry-subtitle">
+      تعرّفي على فريقنا
+      <span class="about-entry-arrow" aria-hidden="true"></span>
+    </span>
+  </button>
+</div>
 
 <nav id="storeNav" aria-label="أقسام المتجر">
   <button class="active" data-section="home" onclick="showSection('home')">الرئيسية</button>
@@ -178,6 +253,35 @@ footer a{color:white}
   <button class="btn btn-light" onclick="clearCart()">إفراغ السلة</button>
 </section>
 
+
+<section id="aboutPage" class="panel hidden">
+  <h2 style="text-align:center">من نحن؟ 🤎</h2>
+  <p class="about-intro">وراء SAZIN STORE ثلاث أخوات، جمعهن الشغف وحبّ الأناقة 🦢</p>
+
+  <div class="about-team">
+
+    <article class="about-member">
+    <img src="./sama.png" alt="صورة سما">
+      <h3>سما</h3>
+      <p>مصممة المتجر (المديرة الإبداعية)</p>
+    </article>
+
+    <article class="about-member">
+      <img src="zainab.png" alt="صورة زينب">
+<h3>زينب</h3>
+<p>المديرة العامة والتسويق</p>
+    </article>
+
+    <article class="about-member">
+     <img src="roaa.png" alt="صورة رؤى">
+<h3>رؤى</h3>
+<p>المستشارة الإبداعية</p>
+    </article>
+
+  </div>
+</section>
+
+
 <section id="productDetail" class="panel hidden">
   <button class="btn btn-light" onclick="showSection(previousSection)">← الرجوع للمنتجات</button>
   <div class="detail-layout">
@@ -220,19 +324,19 @@ footer a{color:white}
   <h3>SAZIN STORE 🤎</h3>
   <p>ذوقٌ يليق بكِ، وتفاصيل تُشبه أناقتكِ 🤎☁️</p>
   <p>للاستفسارات والطلبات، تواصلي معنا عبر واتساب.</p>
-  <p><a id="whatsappFooter" href="https://wa.me/972567344670" target="_blank" rel="noopener">💬 واتساب مباشر</a></p>
+  <p><a id="whatsappFooter" href="https://wa.me/970567344670" target="_blank" rel="noopener">💬 واتساب مباشر</a></p>
   <p>📷 <a href="https://www.instagram.com/bidaya_tkhair/" target="_blank" rel="noopener noreferrer">تابعينا على إنستغرام 🤎</a></p>
   <p>صُنع ♥ في غزة</p>
   <small>كل الحقوق محفوظة © SAZIN STORE 2026</small>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/972567344670" target="_blank" rel="noopener" aria-label="واتساب">☏</a>
+<a class="whatsapp-float" href="https://wa.me/970567344670" target="_blank" rel="noopener" aria-label="واتساب">☏</a>
 
 <script>
 const SUPABASE_URL="https://hkyzzwzzoggseqwnmysb.supabase.co";
 const SUPABASE_KEY="sb_publishable_MnAznGom9JmWOZrKqevtgg_DS6IXPE2";
-const SUPABASE_ANON_LEGACY_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhreXp6d3p6b2dnc2Vxd25teXNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwOTExMjQsImV4cCI6MjEwNzY2NzEyNH0.nr4S-okbRllH7FpfIckODM0Yp6zO29uWBdYoWZs7PQ0";
-const WHATSAPP_NUMBER="972567344670";
+const SUPABASE_ANON_LEGACY_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhreXp6d3p6b2dnc2Vxd25teXNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwOTExMjQsImV4cCI6MjEwNzY2NzEyNH0.nr4S-okbRllH7FpfIckODM4Yp6zO29uWBdYoWZs7PQ0";
+const WHATSAPP_NUMBER="970567344670";
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=id=>document.getElementById(id);
 const PLACEHOLDER="https://placehold.co/500x600/F3E8DE/8C6655?text=SAZIN+STORE";
@@ -317,31 +421,48 @@ function updateActiveNavigation(){
     b.classList.toggle("active",b.dataset.section===currentSection||(b.dataset.categoryId&&currentSection==="category:"+b.dataset.categoryId))
   )
 }
+
+/* فتح وإغلاق قسم من نحن من نفس الخانة */
+function toggleAbout(){
+  if(currentSection === "about"){
+    showSection("home");
+  }else{
+    showSection("about");
+  }
+}
+
 function showSection(section){
   currentSection=section;
   searchQuery="";
   $("search").value="";
-  ["hero","services","storePolicy","storeContent","favoritesPage","cartPage","productDetail","checkout"].forEach(id=>$(id).classList.add("hidden"));
+  ["hero","services","storePolicy","storeContent","favoritesPage","cartPage","aboutPage","productDetail","checkout"].forEach(id=>$(id).classList.add("hidden"));
+
   if(section==="home"){
     $("hero").classList.remove("hidden");
     $("services").classList.remove("hidden");
     $("storePolicy").classList.remove("hidden");
-    $("storeContent").classList.remove("hidden")
+    $("storeContent").classList.remove("hidden");
   }else if(section==="favorites"){
-    $("favoritesPage").classList.remove("hidden")
+    $("favoritesPage").classList.remove("hidden");
   }else if(section==="cart"){
-    $("cartPage").classList.remove("hidden")
+    $("cartPage").classList.remove("hidden");
+  }else if(section==="about"){
+    $("aboutPage").classList.remove("hidden");
   }else if(section==="checkout"){
-    $("checkout").classList.remove("hidden")
+    $("checkout").classList.remove("hidden");
   }else{
-    $("storeContent").classList.remove("hidden")
+    $("storeContent").classList.remove("hidden");
   }
+
   updateActiveNavigation();
+
   if(section==="favorites")renderFavorites();
   else if(section==="cart")renderCart();
-  else if(section!=="checkout")renderCategory();
-  window.scrollTo({top:0,behavior:"smooth"})
+  else if(section!=="checkout"&&section!=="about")renderCategory();
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
+
 function focusSearch(){
   showSection("home");
   $("search").focus();
@@ -542,7 +663,7 @@ function goToCheckout(){
 function openProductDetail(id){
   const p=products.find(x=>x.id===id);if(!p)return;
   previousSection=currentSection;detailProductId=id;
-  ["hero","services","storePolicy","storeContent","favoritesPage","cartPage","checkout"].forEach(x=>$(x).classList.add("hidden"));
+  ["hero","services","storePolicy","storeContent","favoritesPage","cartPage","aboutPage","checkout"].forEach(x=>$(x).classList.add("hidden"));
   $("productDetail").classList.remove("hidden");
   $("detailName").textContent=p.name;
   $("detailPrice").textContent=p.price+" ₪";
@@ -576,7 +697,6 @@ function addDetailToCart(){
 }
 function toggleDetailFavorite(){if(detailProductId!==null)toggleFavorite(detailProductId)}
 $("search").addEventListener("input",e=>{searchQuery=e.target.value.trim().toLowerCase();renderCategory()});
-
 
 $("orderForm").addEventListener("submit", async e => {
   e.preventDefault();
